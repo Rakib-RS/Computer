@@ -1,0 +1,104 @@
+FORMAT: 1A
+HOST:https://computer-price-rest-api.herokuapp.com/price/
+
+#Computer
+Computer is a simple API allowing users to computer name and their price.
+
+## price Collection [/price/]
+
+### List All Price [GET]
+
+List all the C information
+
++ Response 200 (application/json)
+
+        [
+            {
+                "_id": "5cc56c451c9d440000218599",
+                "name": "Hp",
+                "price": 50000
+            },
+            {
+               "_id": "5cc56e52e226bb02fca639ff",
+               "name": "HP",
+               "price": 50000
+            },
+            {
+                "_id": "5cc7f3d91c9d440000a3c00a",
+                "name": "Lenovo",
+                "price": 40000
+            },
+            {
+                "_id": "5cc7f52678330a000430f897",
+                "name": "ASUS",
+                "price": 40500
+            }
+        ]
+
+### Add a New Price Information [POST]
+
+You may add your own company's computer price information using this action. It takes a JSON
+object containing a pet information.
+
++ Request (application/json)
+
+        [
+            {
+              "name" : "HP",
+              "price" : 40000,
+            }
+        ]
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /price/{id}
+
+    + Body
+
+            
+            {
+              "name" : "HP",
+              "price" : 40000,
+            }
+
+## Price [/price/{price_id}]
+
++ Parameters
+    + price_id (number) - ID of the price in the form of an integer
+
+### View a price Details [GET]
+
+View details of a specific price
+
++ Response 200 (application/json)
+
+        [
+            {
+               "_id": "5cc56c451c9d440000218599",
+               "name": "Hp",
+               "price": 50000
+            }
+        ]
+
+### Update a Price Details [PUT]
+
+Update information of a specific price
+
++ Request (application/json)
+
+    + Body
+        
+            {
+                "name": "Hp",
+                "price": 60000
+            }
+
++ Response 204 (no content)
+
+### Delete a Price Details [DELETE]
+
+Delete a specific price
+
++ Response 204 (no content)
